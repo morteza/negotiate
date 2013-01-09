@@ -1,0 +1,29 @@
+#{extends 'layout.html' /}
+#{set title:messages.get('crud.title') /}
+
+#{crud.navigation /}
+
+<div id="row-fluid">
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th></th>
+                <th width="1%"></th>
+            </tr>
+        </thead>
+        <tbody>
+#{crud.types}
+            <tr>
+                <td>
+                    <a href="${type.listAction}">&{type.name}</a>
+                </td>
+                <td class="crudNew" >
+                    <a href="${type.blankAction}" class="btn btn-primary btn-mini pull-right">&{'crud.index.add', type}</a>
+                </td>
+            </tr>
+#{/crud.types}
+        </tbody>
+    </table>
+
+</div>

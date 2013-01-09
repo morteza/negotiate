@@ -11,11 +11,11 @@ import play.mvc.*;
 
 import java.util.*;
 
-import models.Item;
+import models.User;
 
 import controllers.CRUD.For;
 
-@For(Item.class)
-public class Items extends CRUD {
+@For(User.class)
+public class Users extends CRUD {
 
 }

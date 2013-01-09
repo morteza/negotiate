@@ -1,0 +1,24 @@
+#{extends 'layout.html' /}
+#{set title:messages.get('crud.show.title', type.modelName) /}
+
+#{crud.navigation /}
+
+<div id="crudShow" class="${type.name}">
+
+    <h2 id="crudShowTitle">&{'crud.show.title', type.modelName}</h2>
+
+    <div class="objectForm">
+    #{form action:@save(object._key()), enctype:'multipart/form-data'}
+        #{crud.form /}
+        <p class="crudButtons">
+            <input type="submit" class="btn" name="_save" value="&{'crud.save', type.modelName}" />
+            <input type="submit" class="btn" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" />
+    #{/form}
+    #{form @delete(object._key())}
+            <input type="submit" class="btn btn-danger" value="&{'crud.delete', type.modelName}" />
+    #{/form}    
+        </p>
+    </div>
+
+
+</div>

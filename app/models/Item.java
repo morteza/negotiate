@@ -1,3 +1,9 @@
+/**
+ * @author Morteza Ansarinia <ansarinia@me.com>
+ * @date Jan 9, 2013
+ * 
+ */
+
 package models;
 
 import play.*;
@@ -8,7 +14,6 @@ import java.util.*;
 
 /**
  * Represents item to negotiate
- * @author morteza
  *
  */
 @Entity

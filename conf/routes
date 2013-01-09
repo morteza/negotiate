@@ -5,11 +5,28 @@
 # Home page
 GET     /                                       Application.index
 
+# Routes for the CRUD
+# ~~~~~~~~~~~
+
+#{crud.types}
+GET			/management/?										${type.controllerClass.name.substring(12).replace('$','')}.index
+GET			/management/${type.controllerName}					${type.controllerClass.name.substring(12).replace('$','')}.list
+GET			/management/${type.controllerName}/new				${type.controllerClass.name.substring(12).replace('$','')}.blank
+GET			/management/${type.controllerName}/{id}				${type.controllerClass.name.substring(12).replace('$','')}.show
+GET			/management/${type.controllerName}/{id}/{field}		${type.controllerClass.name.substring(12).replace('$','')}.attachment
+GET			/management/${type.controllerName}/{id}/edit		${type.controllerClass.name.substring(12).replace('$','')}.edit
+POST		/management/${type.controllerName}					${type.controllerClass.name.substring(12).replace('$','')}.create
+POST		/management/${type.controllerName}/{id}				${type.controllerClass.name.substring(12).replace('$','')}.save
+DELETE		/management/${type.controllerName}/{id}				${type.controllerClass.name.substring(12).replace('$','')}.delete
+#{/crud.types}
+GET			/management											CRUD.index
+
+
 # Ignore favicon requests
-GET     /favicon.ico                            404
+GET     	/favicon.ico                            			404
 
 # Map static resources from the /app/public folder to the /public path
-GET     /public/                                staticDir:public
+GET			/public/                                			staticDir:public
 
 # Catch all
-*       /{controller}/{action}                  {controller}.{action}
+*      		/{controller}/{action}                  			{controller}.{action}

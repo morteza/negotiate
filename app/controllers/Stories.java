@@ -1,9 +1,17 @@
+/**
+ * @author Morteza Ansarinia <ansarinia@me.com>
+ * @date Jan 9, 2013
+ * 
+ */
+
 package controllers;
 
 import play.*;
-import play.db.jpa.*;
 
-import javax.persistence.*;
+import models.Story;
+
+import controllers.CRUD.For;
+
 import java.util.*;
 
 /**
@@ -11,7 +19,7 @@ import java.util.*;
  * @author morteza
  *
  */
-@Entity
-public class Stories extends Model {
+@For(Story.class)
+public class Stories extends CRUD {
     
 }
