@@ -38,22 +38,17 @@ import play.mvc.Router;
 import play.mvc.With;
 import play.utils.Java;
 
-@Check(UserRole.ADMINISTRATOR)
-@With(Secure.class)
 public abstract class CRUD extends Controller {
 
 	@Before
 	public static void authenticate() throws Throwable {
         if(Security.isConnected()) {
-            if(Security.isConnected()) {
-            	User user = User.find("byUserId",Security.connected()).first();
-                renderArgs.put("user", user);
-            }
-        } else {
-        	Secure.login();
+        	User user = User.find("byUserId",Security.connected()).first();
+        	if (user==null)
+        		user = User.find("byMTurkId", Security.connected()).first();
+        	renderArgs.put("user", user);
         }
-		//TODO add security and put user in renderArgs with 'user' key
-	}
+	}	
 
     @Before
     public static void addType() throws Exception {

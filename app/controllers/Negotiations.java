@@ -17,17 +17,20 @@ import controllers.CRUD.For;
 import models.*;
 
 @Check(UserRole.REGISTERED)
+@With(Secure.class)
 //@For(Negotiation.class)
 public class Negotiations extends CRUD {
 
 	@Before
-	public static void authenticate() {
+	public static void authenticate() throws Throwable {
         if(Security.isConnected()) {
-            	User user = User.find("byUserId",Security.connected()).first();
-                renderArgs.put("user", user);
+        	User user = User.find("byUserId",Security.connected()).first();
+        	if (user==null)
+        		user = User.find("byMTurkId", Security.connected()).first();
+        	renderArgs.put("user", user);
         }
-	}
-	
+	}	
+
     public static void join() {
     	User user = (User) renderArgs.get("user");
         if (Negotiation.get().join(user)!=null)
