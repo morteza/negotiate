@@ -20,6 +20,9 @@ import java.util.*;
 @Entity
 public class User extends Model {
 
+	
+	public String mTurkId;
+	
 	public String fullname;
 	public String email;
 
@@ -33,6 +36,8 @@ public class User extends Model {
 	public UserRole role = UserRole.REGISTERED;
 	
 	public String toString() {
+		if (mTurkId!=null && mTurkId.trim().length()>0)
+			return "mTurk (" + mTurkId + ")";
 		return "" + userId;
 	}
 	

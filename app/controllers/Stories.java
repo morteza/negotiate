@@ -7,8 +7,10 @@
 package controllers;
 
 import play.*;
+import play.mvc.With;
 
 import models.Story;
+import models.UserRole;
 
 import controllers.CRUD.For;
 
@@ -16,9 +18,10 @@ import java.util.*;
 
 /**
  * Represents story
- * @author morteza
  *
  */
+@Check(UserRole.ADMINISTRATOR)
+@With(Secure.class)
 @For(Story.class)
 public class Stories extends CRUD {
     

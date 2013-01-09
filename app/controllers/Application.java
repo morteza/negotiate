@@ -22,10 +22,11 @@ public class Application extends Controller {
 	public static void authenticate() throws Throwable {
         if(Security.isConnected()) {
         	User user = User.find("byUserId",Security.connected()).first();
+        	if (user==null)
+        		user = User.find("byMTurkId", Security.connected()).first();
         	renderArgs.put("user", user);
         }
-	}
-	
+	}	
 
     public static void index() {
         render();

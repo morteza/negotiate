@@ -69,15 +69,15 @@ public class Secure extends Controller {
         render();
     }
 
-    public static void authenticate(@Required String username, String password, boolean remember) throws Throwable {
+    public static void authenticate(String username, String mTurkId, boolean remember) throws Throwable {
         // Check tokens
         Boolean allowed = false;
         try {
             // This is the deprecated method name
-            allowed = (Boolean)Security.invoke("authentify", username, password);
+            allowed = (Boolean)Security.invoke("authentify", username, mTurkId);
         } catch (UnsupportedOperationException e ) {
             // This is the official method name
-            allowed = (Boolean)Security.invoke("authenticate", username, password);
+            allowed = (Boolean)Security.invoke("authenticate", username, mTurkId);
         }
         if(validation.hasErrors() || !allowed) {
             flash.keep("url");
@@ -86,7 +86,11 @@ public class Secure extends Controller {
             login();
         }
         // Mark user as connected
-        session.put("username", username);
+        if (username!=null && username.trim().length()>0)
+        	session.put("username", username);
+        else
+        	session.put("username", mTurkId);
+        
         // Remember if needed
         if(remember) {
             Date expiration = new Date();
