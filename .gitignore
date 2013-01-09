@@ -1,0 +1,7 @@
+*.class
+.classpath
+eclipse
+tmp
+temp
+.DS_Store
+db
