@@ -1,3 +1,31 @@
 #{extends 'layout.html' /}
 #{set title:'Home' /}
 
+<div id="home">
+
+    <div id="signin">
+        #{form @enterDemo()}
+            #{if flash.error}
+                <p class="error">
+                    ${flash.error}
+                </p>
+            #{/if}
+            <p>
+                <label for="nick">Nickname</label>
+                <input type="text" name="user" id="user">
+            </p>
+            <p>
+                <label for="room">Negotiation</label>
+                <select name="negotiation">
+                    <option></option>
+                    <option value="negotiation1">Negotiation #1</option>
+                </select>
+            </p>
+            <p>
+                <label></label>
+                <input type="submit" id="enter" class="btn btn-primary" value="Enter the negotiation">
+            </p>
+        #{/form}
+    </div>
+
+</div>

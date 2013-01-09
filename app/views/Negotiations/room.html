@@ -1,0 +1,100 @@
+#{extends 'layout.html' /}
+#{set title:'Negotiation' /}
+
+	<script>
+	$(function() {
+		$( ".column" ).sortable({
+			connectWith: ".column"
+		});
+
+		$( ".column" ).disableSelection();
+	});
+	</script>
+
+<p>Negotiation #1 — You are negotiating as ${user} <a class="pull-right btn btn-danger"href="@{leave(user)}">Leave</a></p>
+<hr /> 
+<div class="board span8">
+		<div class="row-fluid">
+			<div class="span4" style="text-align:center">You</div>
+			<div class="span4" style="text-align:center"></div>
+			<div class="span4" style="text-align:center">Oppenent</div>
+		</div>
+		<div class="row-fluid">
+			<div class="column span4 well" id="left-column">
+			</div>
+			<div class="column span4 well" id="left-column">
+				<img style="width:50px;height:50px;background-color:red" src="@{'public/images/favicon.png'}">
+				<img style="width:50px;height:50px;background:blue" src="">
+				<img style="width:50px;height:50px;background:green">
+				<img style="width:50px;height:50px;background:red">
+				<img style="width:50px;height:50px;background:blue">
+				<img style="width:50px;height:50px;background:green">
+				<img style="width:50px;height:50px;background:red">
+				<img style="width:50px;height:50px;background:blue">
+				<img style="width:50px;height:50px;background:green">
+			</div>
+			<div class="column span4 well" id="left-column">
+			</div>
+		</div>
+
+</div>
+<div class="span3 well">
+<div id="thread">
+    #{list events}
+        #{if _.type == 'message'}
+            <div class="message ${_.user == user ? 'you' : ''}">
+                <h2>${_.user}</h2>
+                <p>
+                    ${_.text}
+                </p>
+            </div>
+        #{/if}
+        #{if _.type == 'join'}
+            <div class="message notice">
+                <h2></h2>
+                <p>
+                    ${_.user} joined the negotiation
+                </p>
+            </div>
+        #{/if}
+        #{if _.type == 'leave'}
+            <div class="message notice">
+                <h2></h2>
+                <p>
+                    ${_.user} left the negotiation
+                </p>
+            </div>
+        #{/if}
+    #{/list}
+</div>
+
+<div id="newMessage">
+    #{form @say(user)}
+	<div class="input-append">
+        <input type="text" id="message" name="message" autocomplete="off">
+        <input type="submit" class="btn" value="send" id="send">
+	</div>
+    #{/}
+</div>
+
+</div>
+<script type="text/javascript" charset="${_response_encoding}">
+
+    // Scroll the messages panel to the end
+    var scrollDown = function() {
+        //$('#thread').scrollTo('max')
+    }
+
+    // Reload the whole messages panel
+    var refresh = function() {
+        $('#thread').load('@{room(user)} #thread .message', function() {
+            scrollDown()
+        })
+    }
+    
+    // Call refresh every 5 seconds
+    setInterval(refresh, 5000)
+    
+    scrollDown()
+    
+</script>
