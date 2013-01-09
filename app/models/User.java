@@ -18,6 +18,7 @@ import controllers.CRUD.Hidden;
 import java.util.*;
 
 @Entity
+@Table(schema="public", name = "user")
 public class User extends Model {
 
 	
