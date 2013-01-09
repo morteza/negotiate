@@ -11,8 +11,7 @@ import play.libs.F.*;
 //@Entity
 public class Negotiation /*extends Model*/ {
     
-	public User userOne = null;
-	public User userTwo = null;
+	public List<Long> users = new ArrayList<Long>();
 	
     final ArchivedEventStream<Negotiation.Event> events = new ArchivedEventStream<Negotiation.Event>(100);
     
@@ -21,25 +20,16 @@ public class Negotiation /*extends Model*/ {
      * of ChatEvent
      */
     public EventStream<Negotiation.Event> join(User user) {
-    	if(userOne == null) {
-    		userOne = user;
-            events.publish(new Join(user));
-            return events.eventStream();    		
-    	} else {
-    		if(userTwo==null) {
-        		userTwo = user;
-                events.publish(new Join(user));
-                return events.eventStream();    			
-    		}
-    	}
-    	return null;
+    	if (!users.contains(user.id))
+    		users.add(user.id);
+    	return events.eventStream();    			
     }
     
     /**
      * A user leave the negotiation
      */
     public void leave(User user) {
-        events.publish(new Leave(user));
+        //events.publish(new Leave(user));
     }
     
     /**

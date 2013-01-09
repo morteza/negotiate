@@ -30,8 +30,11 @@ public class Negotiations extends CRUD {
 	
     public static void join() {
     	User user = (User) renderArgs.get("user");
-        Negotiation.get().join(user);
-        room();
+        if (Negotiation.get().join(user)!=null)
+        	room();
+        flash.error("You are already negotiating!");
+        flash.keep();
+        Application.index();
     }
     
     public static void room() {
@@ -41,13 +44,18 @@ public class Negotiations extends CRUD {
     	
     	List<String> items = new ArrayList<String>();
     	
-    	for (StoryItem item: sample.items) {
-    		for (int i=0;i<item.count;i++)
-    		items.add(""+item.item.id);
-    	}
+    	if (sample!=null) {
+    		for (StoryItem item: sample.items) {
+    			for (int i=0;i<item.count;i++)
+    				items.add(""+item.item.id);
+    		}
     	    	
-    	List events = Negotiation.get().archive();
-        render(user, events, items);
+    		List events = Negotiation.get().archive();
+    		render(user, events, items);
+    	}
+    	flash.error("No story is available for this negotiaion!");
+    	flash.keep();
+    	Application.index();
     }
     
     public static void say(String message) {
