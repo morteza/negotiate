@@ -1,0 +1,18 @@
+#{extends 'layout.html' /}
+
+<div id="login" class="span4 offset4">
+	
+	<h1>&{'secure.title'}</h1>
+	
+	#{form @authenticate()}
+		
+		<p id="username-field">
+			<label for="username">&{'secure.username'}</label>
+			<input type="text" name="username" id="username" value="${flash.username}" />
+		</p>
+		<p id="signin-field">
+			<input type="hidden" name="password" id="password" value="hello123" />
+			<input type="submit" id="signin" class="btn btn-primary" value="&{'secure.signin'}" />
+		</p>
+	#{/form}
+</div>

@@ -1,0 +1,15 @@
+# Users
+    
+models.User(morteza):
+    email:              ansarinia@me.com
+    password:           hello123
+    fullname:           Morteza Ansarinia
+    role:               SUPERUSER
+    userId:             morteza 
+
+models.User(salar):
+    email:              salarirad@gmail.com
+    password:           hello123
+    fullname:           Mostafa Salarirad
+    role:               REGISTERED
+    userId:             salar 

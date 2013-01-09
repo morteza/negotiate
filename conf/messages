@@ -48,3 +48,11 @@ crud.help.past=In the past.
 crud.help.after=After %s.
 crud.help.before=Before %s.
 crud.help.range=Between %d and %d
+
+secure.title=
+secure.username=User ID:
+secure.password=Password:
+secure.remember=Remember me
+secure.signin=Sign in
+secure.error=Oops, unknown user ID.
+secure.logout=You have been logged out.

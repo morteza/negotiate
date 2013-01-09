@@ -3,27 +3,22 @@
 
 <div id="home">
 
-    <div id="signin">
-        #{form @enterDemo()}
-            #{if flash.error}
-                <p class="error">
-                    ${flash.error}
-                </p>
-            #{/if}
+    <div id="signin" class="span4 offset4">
+        #{form @enter(), class:'form'}
             <p>
-                <label for="nick">Nickname</label>
-                <input type="text" name="user" id="user">
-            </p>
-            <p>
-                <label for="room">Negotiation</label>
+                <label for="room"><strong>Negotiation</strong></label>
                 <select name="negotiation">
                     <option></option>
                     <option value="negotiation1">Negotiation #1</option>
                 </select>
+            	#{if user}
+            	<br />
+            	<strong>Nickname:</strong> ${user.userId}<br />
+            	#{/if}
             </p>
             <p>
                 <label></label>
-                <input type="submit" id="enter" class="btn btn-primary" value="Enter the negotiation">
+                <input type="submit" id="enter" class="btn btn-primary" value="Start">
             </p>
         #{/form}
     </div>

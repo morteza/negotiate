@@ -21,6 +21,7 @@
  
 <div id="wrap">
 	<div class="container">
+		#{if user}
 		<div class="page-header">
 			<h3>NegoBoard <small>0.0.1-PROTOTYPE</small></h3>
 			<div class="navbar navbar-inverse">
@@ -38,7 +39,10 @@
 				</div>
 			</div>
 		</div>
-
+		#{/if}
+		#{else}
+		<br />
+		#{/else}
 		#{if flash.success}
 		<div class="row-fluid">
 			<div class="alert alert-info alert-block span6 offset3">
@@ -53,7 +57,7 @@
 			<div class="alert alert-error alert-block span6 offset3">
 				<a class="close" data-dismiss="alert" href="#">&times;</a>
 				<h4 class="alert-heading"></h4>
-				<p style="text-align:center">${flash.erro}</p>
+				<p style="text-align:center">${flash.error}</p>
 			</div>
 		</div>
 		#{/if}
@@ -61,12 +65,15 @@
 	</div>
 	<div id="push"></div>
 </div>
+
+#{if user}
 <div id="footer">
 	<div class="container">
 		<p class="muted credit">
-			<small>Copyleft 2012.</small>
+			<small><a href="@{Secure.logout}">Logout</a> - Copyleft 2012.</small>
 		</p>
 	</div>
 </div>
+#{/if}
 </body>
 </html>

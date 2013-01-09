@@ -19,6 +19,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import models.User;
+
 import play.Logger;
 import play.Play;
 import play.data.binding.Binder;
@@ -35,6 +37,19 @@ import play.mvc.Router;
 import play.utils.Java;
 
 public abstract class CRUD extends Controller {
+
+	@Before
+	public static void authenticate() throws Throwable {
+        if(Security.isConnected()) {
+            if(Security.isConnected()) {
+            	User user = User.find("byUserId",Security.connected()).first();
+                renderArgs.put("user", user);
+            }
+        } else {
+        	Secure.login();
+        }
+		//TODO add security and put user in renderArgs with 'user' key
+	}
 
     @Before
     public static void addType() throws Exception {

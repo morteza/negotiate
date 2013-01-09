@@ -11,7 +11,7 @@
 	});
 	</script>
 
-<p>Negotiation #1 — You are negotiating as ${user} <a class="pull-right btn btn-danger"href="@{leave(user)}">Leave</a></p>
+<p>Negotiation #1 — You are negotiating as ${user} <a class="pull-right btn btn-danger"href="@{leave()}">Leave</a></p>
 <hr /> 
 <div class="board span8">
 		<div class="row-fluid">
@@ -23,15 +23,15 @@
 			<div class="column span4 well" id="left-column">
 			</div>
 			<div class="column span4 well" id="left-column">
-				<img style="width:50px;height:50px;background-color:red" src="@{'public/images/favicon.png'}">
-				<img style="width:50px;height:50px;background:blue" src="">
-				<img style="width:50px;height:50px;background:green">
-				<img style="width:50px;height:50px;background:red">
-				<img style="width:50px;height:50px;background:blue">
-				<img style="width:50px;height:50px;background:green">
-				<img style="width:50px;height:50px;background:red">
-				<img style="width:50px;height:50px;background:blue">
-				<img style="width:50px;height:50px;background:green">
+				<img style="width:50px;height:50px;" src="@{'public/images/placeholderr.png'}">
+				<img style="width:50px;height:50px;" src="@{'public/images/placeholderr.png'}">
+				<img style="width:50px;height:50px;" src="@{'public/images/placeholderr.png'}">
+				<img style="width:50px;height:50px;" src="@{'public/images/placeholderg.png'}">
+				<img style="width:50px;height:50px;" src="@{'public/images/placeholderg.png'}">
+				<img style="width:50px;height:50px;" src="@{'public/images/placeholderg.png'}">
+				<img style="width:50px;height:50px;" src="@{'public/images/placeholderb.png'}">
+				<img style="width:50px;height:50px;" src="@{'public/images/placeholderb.png'}">
+				<img style="width:50px;height:50px;" src="@{'public/images/placeholderb.png'}">
 			</div>
 			<div class="column span4 well" id="left-column">
 			</div>
@@ -39,43 +39,43 @@
 
 </div>
 <div class="span3 well">
-<div id="thread">
-    #{list events}
-        #{if _.type == 'message'}
-            <div class="message ${_.user == user ? 'you' : ''}">
-                <h2>${_.user}</h2>
-                <p>
-                    ${_.text}
-                </p>
-            </div>
-        #{/if}
-        #{if _.type == 'join'}
-            <div class="message notice">
-                <h2></h2>
-                <p>
-                    ${_.user} joined the negotiation
-                </p>
-            </div>
-        #{/if}
-        #{if _.type == 'leave'}
-            <div class="message notice">
-                <h2></h2>
-                <p>
-                    ${_.user} left the negotiation
-                </p>
-            </div>
-        #{/if}
-    #{/list}
-</div>
-
-<div id="newMessage">
-    #{form @say(user)}
-	<div class="input-append">
-        <input type="text" id="message" name="message" autocomplete="off">
-        <input type="submit" class="btn" value="send" id="send">
+		<div id="thread">
+	    #{list events}
+	        #{if _.type == 'message'}
+	            <div class="message ${_.user == user ? 'you' : ''}">
+	                <strong>${_.user}</strong>:
+	                <span>
+	                    ${_.text}
+	                </span>
+	            </div>
+	        #{/if}
+	        #{if _.type == 'join'}
+	            <div class="message notice">
+	                <h2></h2>
+	                <p>
+	                    ${_.user} joined the negotiation
+	                </p>
+	            </div>
+	        #{/if}
+	        #{if _.type == 'leave'}
+	            <div class="message notice">
+	                <h2></h2>
+	                <p>
+	                    ${_.user} left the negotiation
+	                </p>
+	            </div>
+	        #{/if}
+	    #{/list}
 	</div>
-    #{/}
-</div>
+		<div id="newMessage">
+	    #{form @say()}
+		<div class="input-append">
+	        <input type="text" id="message" name="message" autocomplete="off">
+	        <input type="submit" class="btn" value="send" id="send">
+		</div>
+	    #{/}
+	</div>
+
 
 </div>
 <script type="text/javascript" charset="${_response_encoding}">
@@ -87,7 +87,7 @@
 
     // Reload the whole messages panel
     var refresh = function() {
-        $('#thread').load('@{room(user)} #thread .message', function() {
+        $('#thread').load('@{room()} #thread .message', function() {
             scrollDown()
         })
     }

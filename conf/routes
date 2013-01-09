@@ -5,6 +5,11 @@
 # Home page
 GET     /                                       Application.index
 
+# Secure pages
+*		/login									Secure.login
+*		/logout									Secure.logout
+
+
 # Routes for the CRUD
 # ~~~~~~~~~~~
 

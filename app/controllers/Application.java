@@ -14,11 +14,15 @@ import java.util.*;
 
 import models.*;
 
+@Check(UserRole.REGISTERED)
 public class Application extends Controller {
 
 	@Before
-	public static void authenticate() {
-		//TODO add security and put user in renderArgs with 'user' key
+	public static void authenticate() throws Throwable {
+        if(Security.isConnected()) {
+        	User user = User.find("byUserId",Security.connected()).first();
+        	renderArgs.put("user", user);
+        }
 	}
 	
 
@@ -34,15 +38,17 @@ public class Application extends Controller {
 
     	User user = (User) renderArgs.get("user");
     	
+    	validation.valid(user);
+    	
     	if(validation.hasErrors()) {
-            flash.error("Please choose a nick name and the demonstration type…");
+            flash.error("Invalid negotiation. Please choose a negotiation.");
             index();
         }
-        
+            	
     	//TODO find negotiation
         // Dispatch to the demonstration        
         if(negotiation.equals("negotiation1")) {
-            Negotiations.index(user);
+            Negotiations.join();
         }
     }
 

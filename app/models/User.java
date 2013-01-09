@@ -12,22 +12,28 @@ import play.data.validation.Required;
 import play.db.jpa.*;
 
 import javax.persistence.*;
+
+import controllers.CRUD.Hidden;
+
 import java.util.*;
 
 @Entity
 public class User extends Model {
 
 	public String fullname;
+	public String email;
 
 	@Required
-	public String email;
-	
-	@Required
+	public String userId;
+		
 	@Password
 	public String password;
 	
+	@Required
+	public UserRole role = UserRole.REGISTERED;
+	
 	public String toString() {
-		return "" + email;
+		return "" + userId;
 	}
 	
 }

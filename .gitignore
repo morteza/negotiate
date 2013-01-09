@@ -1,0 +1,6 @@
+*.class
+eclipse
+tmp
+temp
+db
+.classpath

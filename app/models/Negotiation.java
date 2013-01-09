@@ -8,8 +8,8 @@ import play.db.jpa.Model;
 import play.libs.*;
 import play.libs.F.*;
 
-@Entity
-public class Negotiation extends Model{
+//@Entity
+public class Negotiation /*extends Model*/ {
     
 	public User userOne = null;
 	public User userTwo = null;

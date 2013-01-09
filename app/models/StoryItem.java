@@ -14,18 +14,22 @@ import javax.persistence.*;
 import java.util.*;
 
 /**
- * Represents item to negotiate
+ * Represents a key and its value
  *
  */
 @Entity
-public class Item extends Model {
+public class StoryItem extends Model {
  
-	public Blob icon;
+	@ManyToOne(cascade=CascadeType.ALL)
+	public Story story;
+	
+	@OneToOne
+	public Item key;
 	
 	@Required
-	public String title;
+	public Integer count;
 	
 	public String toString() {
-		return title;
+		return key.toString() + " (" + count + ")";
 	}
 }
