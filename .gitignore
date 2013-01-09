@@ -1,7 +1,12 @@
-*.class
-eclipse
-tmp
-temp
-db
+eclipse/
 .classpath
 data
+bin/
+data/
+db/
+dist/
+logs/
+test-result/
+lib/
+tmp/
+modules/
