@@ -20,6 +20,7 @@ import java.util.Date;
 import java.util.List;
 
 import models.User;
+import models.UserRole;
 
 import play.Logger;
 import play.Play;
@@ -34,8 +35,11 @@ import play.i18n.Messages;
 import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.Router;
+import play.mvc.With;
 import play.utils.Java;
 
+@Check(UserRole.ADMINISTRATOR)
+@With(Secure.class)
 public abstract class CRUD extends Controller {
 
 	@Before

@@ -15,6 +15,7 @@ import java.util.*;
 import models.*;
 
 @Check(UserRole.REGISTERED)
+@With(Secure.class)
 public class Application extends Controller {
 
 	@Before

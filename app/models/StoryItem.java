@@ -24,12 +24,12 @@ public class StoryItem extends Model {
 	public Story story;
 	
 	@OneToOne
-	public Item key;
+	public Item item;
 	
 	@Required
 	public Integer count;
 	
 	public String toString() {
-		return key.toString() + " (" + count + ")";
+		return story.toString() + " (" + item + "=" + count + ")";
 	}
 }

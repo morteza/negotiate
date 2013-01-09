@@ -9,6 +9,7 @@ package controllers;
 import play.*;
 import play.mvc.*;
 
+import java.io.File;
 import java.util.*;
 
 import controllers.CRUD.For;
@@ -35,8 +36,18 @@ public class Negotiations extends CRUD {
     
     public static void room() {
     	User user = (User) renderArgs.get("user");
+    	
+    	Story sample = Story.all().first();
+    	
+    	List<String> items = new ArrayList<String>();
+    	
+    	for (StoryItem item: sample.items) {
+    		for (int i=0;i<item.count;i++)
+    		items.add(""+item.item.id);
+    	}
+    	    	
     	List events = Negotiation.get().archive();
-        render(user, events);
+        render(user, events, items);
     }
     
     public static void say(String message) {

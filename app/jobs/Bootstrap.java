@@ -21,6 +21,7 @@ public class Bootstrap extends Job {
     public void doJob() {
     	System.out.println("Starting Negotiate...");
     	
+    	//Fixtures.deleteDatabase();
     	//User.deleteAll();
     	
 		if(User.count() == 0) {
