@@ -1,6 +1,5 @@
 # Social Negotiate (Web-based Psychology Experiment)
 
----
 
 Simulate realtime web-based negotiation over money and other resources between two parties. It was part of an academic experiment in the field of social psychology.
 
@@ -22,6 +21,7 @@ It can easily be deployed on the Heroku platform. No special configuration is ne
 **Mostafa Salarirad**
 
 + <salarirad@gmail.com>
+
 
 ## Copyright and license
 
