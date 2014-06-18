@@ -1,3 +1,9 @@
+/**
+ * @author Morteza Ansarinia <ansarinia@me.com>
+ * @date Jan 9, 2013
+ * 
+ */
+
 package models;
 
 import java.util.*;
