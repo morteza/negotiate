@@ -1,4 +1,4 @@
-# Social Negotiate
+# Social Negotiate (Web-based Psychology Experiment)
 
 ---
 
@@ -11,7 +11,7 @@ The story behind negotiation is currently just over resources after an earthquak
 
 ## Deploy
 
-It can easily be deployed to the Heroku. No special configuration is necesssary.
+It can easily be deployed on the Heroku platform. No special configuration is necesssary.
 
 ## Authors
 
