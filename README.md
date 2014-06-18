@@ -6,7 +6,12 @@ Simulate realtime web-based negotiation over money and other resources between t
 
 In addition to regular entrance for users, it supports Amazon Mechanical Turk to enter a negotiation board, to crowd-sourced studies.
 
-The story behind negotiation is currently just over resources after an earthquake and negotiated over vital resources. But it's designed in such a method to add other kinds of stories behind negotiations and other kind of resources.
+The story behind negotiation is currently just over resources after an earthquake and over some respective vital resources. It's designed in such a way to easily add new negotiations and stories behind the negotiations and other kind of resources.
+
+
+## Deploy
+
+It can easily be deployed to the Heroku. No special configuration is necesssary.
 
 ## Authors
 
