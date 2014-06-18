@@ -1,9 +1,11 @@
-# Social Negotiate (Web-based Psychology Experiment)
+# Social Negotiate
+
+> Web-based social psychology experiment to simulate negotiations.
 
 
 Simulate realtime web-based negotiation over money and other resources between two parties. It was part of an academic experiment in the field of social psychology.
 
-In addition to regular entrance for users, it supports Amazon Mechanical Turk to enter a negotiation board, to crowd-sourced studies.
+In addition to regular entrance for users, it supports Amazon Mechanical Turk (Artificial artificial intelligence!) to enter a negotiation board, to crowd-sourced studies.
 
 The story behind negotiation is currently just over resources after an earthquake and over some respective vital resources. It's designed in such a way to easily add new negotiations and stories behind the negotiations and other kind of resources.
 
